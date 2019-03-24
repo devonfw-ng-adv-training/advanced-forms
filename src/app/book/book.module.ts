@@ -22,7 +22,6 @@ import {
   exports: [MatFormFieldModule],
   declarations: [BookOverviewComponent, BookDetailsComponent],
   providers: [
-    {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
   ]
 })
 export class BookModule {
