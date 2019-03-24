@@ -35,9 +35,6 @@
   <div class="form-group row">
     <app-customized-select-box [options]="genres" [placeholder]="'Genre'"
                                formControlName="genre"></app-customized-select-box>
-    <mat-error>
-      <app-error-messages [ofFormControl]="bookForm.get('genre')" [ofForm]="myForm"></app-error-messages>
-    </mat-error>
   </div>
 
   <div class="form-group row">
@@ -52,3 +49,5 @@
     </button>
   </div>
 </form>
+
+

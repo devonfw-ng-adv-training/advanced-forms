@@ -16,8 +16,6 @@ import {BookService} from '../book/book.service';
 import {CustomizedSelectBoxComponent} from './custom-components/customized-select-box/customized-select-box.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {BookGenresService} from '../book/book-genres.service';
-import { AddErrorMessagesComponent } from './add-error-messages/add-error-messages.component';
-import { ErrorMessagesComponent } from './error-messages/error-messages.component';
 
 @NgModule({
   imports: [
@@ -33,9 +31,7 @@ import { ErrorMessagesComponent } from './error-messages/error-messages.componen
     ReactiveFormsModule,
     MatFormFieldModule,
   ],
-  declarations: [ToolbarComponent, NavigationComponent, HomeComponent, CustomizedSelectBoxComponent,
-    AddErrorMessagesComponent, ErrorMessagesComponent,
-    ],
+  declarations: [ToolbarComponent, NavigationComponent, HomeComponent, CustomizedSelectBoxComponent],
   exports: [
     CommonModule,
     ToolbarComponent,
@@ -47,8 +43,6 @@ import { ErrorMessagesComponent } from './error-messages/error-messages.componen
     MatCardModule,
     CustomizedSelectBoxComponent,
     MatInputModule,
-    AddErrorMessagesComponent,
-    ErrorMessagesComponent,
     MatFormFieldModule
   ]
 })

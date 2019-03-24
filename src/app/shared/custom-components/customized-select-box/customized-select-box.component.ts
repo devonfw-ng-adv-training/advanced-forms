@@ -1,5 +1,5 @@
 import {Component, forwardRef, Input, OnInit, ViewChild} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {MatSelect} from '@angular/material';
 import {Genre} from '@book/genre';
 
@@ -16,21 +16,25 @@ import {Genre} from '@book/genre';
   ]
 })
 export class CustomizedSelectBoxComponent implements OnInit, ControlValueAccessor {
-  @ViewChild(MatSelect) matSelect: MatSelect;
+
   @Input() placeholder: string;
   @Input() options: Genre[] = [];
 
+  @ViewChild(MatSelect) matSelect: MatSelect;
+
   selected: any;
 
-  constructor() {}
+  constructor() {
+  }
 
-  onChange = (val: any) => {};
+  private propagateChange = (val: any) => {
+  };
 
   ngOnInit(): void {
   }
 
   registerOnChange(fn: any): void {
-    this.onChange = fn;
+    this.propagateChange = fn;
   }
 
   registerOnTouched(fn: any): void {
@@ -46,7 +50,7 @@ export class CustomizedSelectBoxComponent implements OnInit, ControlValueAccesso
 
   onSelectionChange() {
     this.setSelectedIfGenreDefined();
-    this.onChange(this.matSelect.value);
+    this.propagateChange(this.matSelect.value);
   }
 
   private setSelectedIfGenreDefined() {

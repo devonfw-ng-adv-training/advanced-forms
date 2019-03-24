@@ -7,8 +7,6 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatAutocompleteModule,
-  ShowOnDirtyErrorStateMatcher,
-  ErrorStateMatcher
 } from '@angular/material';
 
 @NgModule({
@@ -21,9 +19,7 @@ import {
   ],
   exports: [MatFormFieldModule],
   declarations: [BookOverviewComponent, BookDetailsComponent],
-  providers: [
-    {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
-  ]
+  providers: []
 })
 export class BookModule {
 }

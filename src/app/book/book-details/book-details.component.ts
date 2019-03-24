@@ -11,11 +11,11 @@ import {Genre} from '../genre';
   styleUrls: ['./book-details.component.scss']
 })
 export class BookDetailsComponent implements OnInit {
+  @ViewChild(FormGroupDirective) myForm;
   book: Book;
   submitted: boolean;
   bookForm: FormGroup;
   genres: Genre[];
-  @ViewChild(FormGroupDirective) myForm;
 
   constructor(
     private formBuilder: FormBuilder,
