@@ -15,12 +15,6 @@ import {validate} from 'codelyzer/walkerFactory/walkerFn';
 import {ErrorStateMatcher, ShowOnDirtyErrorStateMatcher} from '@angular/material';
 import {Error} from 'tslint/lib/error';
 
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    return control.invalid && control.touched;
-  }
-}
-
 @Component({
   selector: 'app-address',
   templateUrl: './address.component.html',
@@ -35,10 +29,6 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
       provide: NG_VALIDATORS,
       useExisting: forwardRef(() => AddressComponent),
       multi: true
-    },
-    {
-      provide: ErrorStateMatcher,
-      useClass: MyErrorStateMatcher
     }
   ]
 })
