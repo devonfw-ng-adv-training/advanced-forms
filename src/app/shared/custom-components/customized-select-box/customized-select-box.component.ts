@@ -16,21 +16,23 @@ import {Genre} from '@book/genre';
   ]
 })
 export class CustomizedSelectBoxComponent implements OnInit, ControlValueAccessor {
-  @ViewChild(MatSelect) matSelect: MatSelect;
   @Input() placeholder: string;
   @Input() options: Genre[] = [];
 
+  @ViewChild(MatSelect) matSelect: MatSelect;
+
   selected: any;
+  private propagateChange = (val: any) => {};
 
-  constructor() {}
+  constructor() {
+  }
 
-  onChange = (val: any) => {};
 
   ngOnInit(): void {
   }
 
   registerOnChange(fn: any): void {
-    this.onChange = fn;
+    this.propagateChange = fn;
   }
 
   registerOnTouched(fn: any): void {
@@ -46,7 +48,7 @@ export class CustomizedSelectBoxComponent implements OnInit, ControlValueAccesso
 
   onSelectionChange() {
     this.setSelectedIfGenreDefined();
-    this.onChange(this.matSelect.value);
+    this.propagateChange(this.matSelect.value);
   }
 
   private setSelectedIfGenreDefined() {
