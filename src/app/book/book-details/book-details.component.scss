@@ -6,3 +6,17 @@
 .example-container > * {
   width: 90%;
 }
+
+// MatButton's `color` input has no effect in M3 themes, so the Apply/Cancel
+// brand colors must be applied directly.
+@import '../../../variables';
+
+button[mat-raised-button][color='primary'] {
+  background-color: $app-vibrant-blue;
+  color: $app-white;
+}
+
+button[mat-stroked-button][color='warn'] {
+  color: $app-tech-red;
+  border-color: $app-tech-red;
+}

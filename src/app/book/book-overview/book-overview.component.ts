@@ -1,10 +1,11 @@
+import { BookService } from './../book.service';
 import { Component, OnInit } from '@angular/core';
-import { BookService } from '../book.service';
 import { Book } from '../book';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-book-overview',
+  standalone: false,
   templateUrl: './book-overview.component.html',
   styleUrls: ['./book-overview.component.scss']
 })
@@ -17,11 +18,11 @@ export class BookOverviewComponent implements OnInit {
     this.books$ = this.book.findAll();
   }
 
-  showBook(book: Book): any {
+  showBook(book: Book): void {
     this.router.navigate(['/book', book.id]);
   }
 
-  newBook(): any {
+  newBook(): void {
     this.router.navigate(['/book']);
   }
 }

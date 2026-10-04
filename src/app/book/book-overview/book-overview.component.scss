@@ -1,3 +1,5 @@
+@import '../../../variables';
+
 ul.book-card-container {
   display: flex;
   flex-wrap: wrap;
@@ -22,4 +24,8 @@ button.floating-button {
   position: fixed;
   bottom: 5%;
   right: 5%;
+
+  // MatButton's `color` input has no effect in M3 themes.
+  background-color: $app-vibrant-blue;
+  color: $app-white;
 }

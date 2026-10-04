@@ -1,1 +1,13 @@
-@import "cg-theme";
+@use 'cg-theme';
+
+body {
+  // Default the application to a light color theme.
+  color-scheme: light;
+
+  // Set a default background, font and text colors using Angular Material's
+  // system-level CSS variables. Learn more at https://material.angular.dev/guide/theming
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+
+  margin: 0;
+}

@@ -1,5 +1,8 @@
 @import '../../../variables';
 
-mat-toolbar.mat-accent {
+// MatToolbar's `color` input has no effect in M3 themes, so the brand color
+// must be applied directly instead of relying on the old `.mat-accent` class.
+mat-toolbar {
+  background-color: $app-zest-green;
   color: $app-white;
 }

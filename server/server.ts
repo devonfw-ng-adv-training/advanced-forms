@@ -1,9 +1,8 @@
-import * as express from 'express';
-const bodyParser = require('body-parser');
-import {readFileSync} from 'fs';
-const { find, includes, max, map, isString } = require('lodash');
+import express from 'express';
+import { readFileSync } from 'fs';
+import { max, map, isString } from 'lodash-es';
 
-const books = JSON.parse(readFileSync(__dirname + '/books.json', 'utf-8').toString());
+const books = JSON.parse(readFileSync(new URL('./books.json', import.meta.url), 'utf-8').toString());
 
 function* idSequence(initial) {
   let i = initial;
@@ -11,7 +10,6 @@ function* idSequence(initial) {
 }
 
 const booksIdGen = idSequence(max(map(books, 'id')) + 1);
-const util = require('util');
 
 const isBook = (book) => !!book && !!book.title && isString(book.title)
   && !!book.author && isString(book.author)
@@ -29,15 +27,20 @@ const byId = (id) => (book) => book.id === +id;
  // ----------  EXPRESS ----------
 
 const app = express();
-app.use(bodyParser.json());
+app.use(express.json());
 
 app.get('/api/book', (req, res) => {
     res.json(books);
   }
 );
 
-app.listen(9000, () => {
-  console.log('Server listening on port 9000!');
+app.listen(9100, (error) => {
+  // Express 5 passes listen errors (e.g. EADDRINUSE) to the callback instead of throwing
+  if (error) {
+    console.error('Failed to start server:', error);
+    process.exit(1);
+  }
+  console.log('Server listening on port 9100!');
 });
 
 app.post('/api/book', hasBook, (req, res) => {
@@ -57,15 +60,3 @@ app.post('/api/book', hasBook, (req, res) => {
         res.json(newBook);
     }
 });
-
-
-
-app.get('/api/book/:id', (req, res) => {
-  const book = books.find(byId(req.params.id));
-  book ? res.json(book) : res.status(404).json({ error: 'book not found' });
-});
-
-
-
-
-

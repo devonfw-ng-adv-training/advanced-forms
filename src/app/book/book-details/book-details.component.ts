@@ -1,11 +1,12 @@
 import { BookService } from './../book.service';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Book } from '../book';
 
 @Component({
   selector: 'app-book-details',
+  standalone: false,
   templateUrl: './book-details.component.html',
   styleUrls: ['./book-details.component.scss']
 })
@@ -18,7 +19,8 @@ export class BookDetailsComponent implements OnInit {
     private formBuilder: FormBuilder,
     private bookService: BookService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private changeDetectorRef: ChangeDetectorRef
   ) {
     this.book = new Book();
   }
@@ -44,6 +46,8 @@ export class BookDetailsComponent implements OnInit {
       }
 
       this.bookForm.setValue(this.book);
+      // Zoneless: setValue() outside a template event doesn't auto-trigger CD.
+      this.changeDetectorRef.markForCheck();
     });
   }
 
