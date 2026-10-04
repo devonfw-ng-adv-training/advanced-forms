@@ -1,6 +1,6 @@
 [
-  {"id": 1, "genre": "IT"},
-  {"id": 2, "genre": "Science fiction"},
-  {"id": 3, "genre": "Fantasy"},
-  {"id": 4, "genre": "Crime"}
+  {"id": 1, "name": "IT", "icon": "code"},
+  {"id": 2, "name": "Science fiction", "icon": "rocket_launch"},
+  {"id": 3, "name": "Fantasy", "icon": "auto_stories"},
+  {"id": 4, "name": "Crime", "icon": "local_police"}
 ]

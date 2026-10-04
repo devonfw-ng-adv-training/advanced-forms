@@ -1,0 +1,15 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 90%;
+}
+
+@import '../../../variables';
+
+button[mat-raised-button][color='primary'] {
+  background-color: $app-vibrant-blue;
+  color: $app-white;
+}

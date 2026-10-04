@@ -34,6 +34,16 @@ app.get('/api/book', (req, res) => {
   }
 );
 
+app.get('/api/book/:id', (req, res) => {
+    const book = books.find(byId(req.params.id));
+    if (book) {
+      res.json(book);
+    } else {
+      res.status(404).json({ error: 'book not found' });
+    }
+  }
+);
+
 app.listen(9100, (error) => {
   // Express 5 passes listen errors (e.g. EADDRINUSE) to the callback instead of throwing
   if (error) {
