@@ -1,3 +1,5 @@
+@import '../variables';
+
 .app-container {
   display: flex;
   flex-direction: column;
@@ -9,6 +11,11 @@
 
   .sidenav-container {
     flex: 1 1 auto;
+
+    mat-sidenav {
+      background-color: $app-light-grey;
+      border-right: 1px solid $app-grey;
+    }
 
     .app-main-content {
       padding: 1em;

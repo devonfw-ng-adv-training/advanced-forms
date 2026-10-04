@@ -13,9 +13,24 @@ ul.book-card-container {
   .book-card {
     width: 20em;
     margin: 1em 0 0 1em;
+    overflow: hidden; // keep content from spilling past the rounded corners
+
+    // mat-card-title-group adds no padding by design (unlike mat-card-header/-content).
+    // It's also content-box, so border-box is needed or the padding adds to its fixed width.
+    mat-card-title-group {
+      box-sizing: border-box;
+      padding: 16px;
+
+      > div {
+        min-width: 0; // let the title/subtitle shrink instead of pushing the image out
+      }
+    }
 
     .book-card-img {
+      flex-shrink: 0;
+      width: 46px;
       height: 58px;
+      object-fit: cover;
     }
   }
 }

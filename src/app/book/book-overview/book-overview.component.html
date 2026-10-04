@@ -4,6 +4,7 @@
       <mat-card-title-group>
         <mat-card-title>{{ book.title }}</mat-card-title>
         <img
+          mat-card-sm-image
           class="book-card-img"
           [src]="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-S.jpg'"
           alt="{{ book.title }} cover"
