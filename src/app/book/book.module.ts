@@ -3,12 +3,9 @@ import { BookOverviewComponent } from './book-overview/book-overview.component';
 import { SharedModule } from '../shared/shared.module';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import {
-  MatFormFieldModule,
-  MatInputModule,
-  ShowOnDirtyErrorStateMatcher,
-  ErrorStateMatcher
-} from '@angular/material';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 
 @NgModule({
   imports: [
